@@ -1,0 +1,108 @@
+WebAssembly 맛보기
+(WebAssembly preview and getting started)
+
+
+1. WebAssembly란?
+-> 결론부터
+-> byte(binary) code ---> run on browser
+
+
+2. WebAssembly가 되면 무었이 좋을까?
+-> 공식데모 보여주기(게임)
+-> game, security, 대규모 연산, native 연동 등등
+-> 속도, 성능
+
+
+3. WebAssembly의 등장 배경(두둥..) (히스토리?)
+-> 갑툭튀?
+-> 아니다!!! -> ActiveX --> NPAPI -> NPclient?
+-> native접근? 성능?
+-> asm.js라는 놈이 이미 있는데?
+
+
+4. asm.js에 대한 이야기를 잠깐 하고 넘어가자. (background 지식)
+-> js의 서브셋
+-> asm.js엔진이 있음.
+
+
+5. asm.js의 구조
+-> 인간이 만드는게 아니야~
+
+a.c 파일 --> gcc --> a.o 파일
+
+그럼
+
+?  파일 --> ? -->  asm.js 코드
+
+a.c    --> gcc 같은 툴 (emscripten) --> asm.js 코드
+a.cpp  --> gcc 같은 툴 (emscripten) --> asm.js 코드
+
+6. 다시 WebAssembly로 돌아와서.
+
+source --> tool --> WebAssembly byte code
+
+source >> c, cpp, etc......
+tool ?
+
+
+7. tool ??
+처음부터 c을 파싱 분석 해서 WebAssembly 바이트 코드로 떨구기??
+NO ~~~
+우리에겐 이미 C, CPP ---> JS(asm.js) 툴이 있자냐~~
+
+
+8. 그럼 어떻게?
+A. asm.js --> bireryen --> WebAssembly byte code
+B. emscripten 에 기능을 좀만 추가해서
+   --> WebAssembly byte code로 떨구게 하거나.
+   --> asm.js코드로 그냥 떨구게?
+
+
+9. WebAssembly byte code에 대해서 잠깐 살펴보면
+--> WAST 포멧, WASM 포멧
+--> Text, Binary
+(홈피설명)
+
+
+10. 그럼 실제 byte code을 위해서는 WASM <-> WAST 도 되야 하네?
+--> binaryen (tool로 됨)
+
+
+11. 중간 정리. simple archicture
+
+
+12. 실전.. WebAssembly~ -- PreRequired, Tool 설치하기~(ubuntu)
+a. make, cmake, clang, build-essential
+b. emscripten
+c. binaryen
+
+
+13. 그다음 과정 요약 정리
+C코드 작성 -> asm.js -> wast -> wasm -> wasm로딩 하는 js코드 작성 -> browser테스트
+
+
+14. c코드 작성 -> asm.js
+15. asm.js -> wast
+16. wast -> wasm
+17. wasm 로딩 모듈 작성
+18. browser에서 테스트 (브라우저 옵션켜기-chrome)
+
+--> 각 과정에서 트러블 슈팅 (링크 or 문서번호로 주석)
+
+
+19. 축하합니다. 당신의 첫 WebAssembly 코딩에 성공을~
+
+
+20. 정리하기
+-> 활용도, 가능성 높음, 기술 발전의 여지가 매우 높음
+-> 응용이 무궁 무진.
+-> 앞에서 못한 이야기 (js가 껍데기, 코어 로직은 바이너리...)
+-> 유의할점.. (현재-2016.12 현재는... 개발이 어려움. -> 개발 지원중.)
+
+21. 참고 사이트
+22. Q & A
+
+23. 트러블 슈팅 & 심화 자료(
+LLVM 을 포함한 그림,
+WebAssembly text code 이야기,
+WebAssembly 바이너리 코드 이야기)
